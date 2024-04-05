@@ -33,6 +33,8 @@ builder.Services.AddScoped<DrinkContext>(provider =>
 var app = builder.Build();
 //This is a third test
 
+//This is a forth test
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
