@@ -1,0 +1,5 @@
+Id,Name,Size,IsGlutenFree,Price
+1,Margherita,Small,False,9.99
+2,Pepperoni,Medium,True,12.99
+3,Vegetarian Mushroom Peanut,Medium,True,50.00
+4,Pizza Mushroom,Medium,True,50.00

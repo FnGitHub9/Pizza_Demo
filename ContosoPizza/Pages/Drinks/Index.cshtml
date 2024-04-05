@@ -1,0 +1,59 @@
+﻿@page
+@model ContosoPizza.Pages.Drinks.IndexModel
+@{
+    ViewData["Title"] = "Drink List";
+}
+
+
+<h1 class="display-4">Add Drink</h1>
+<!-- New Pizza form will go here -->
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="NewDrink.DrinkName" class="control-label"></label>
+        <input asp-for="NewDrink.DrinkName" class="form-control" />
+        <span asp-validation-for="NewDrink.DrinkName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NewDrink.Price" class="control-label"></label>
+        <input asp-for="NewDrink.Price" class="form-control" />
+        <span asp-validation-for="NewDrink.Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<!-- List of drinks will go here -->
+<h1 class="display-4">Drink List</h1>
+<table class="table mt-5">
+    <thead>
+        <tr class="bg-dark text-white">
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var drink in Model.DrinkList)
+        {
+            <tr>
+                <td>@drink.DrinkName</td>
+                <td>@($"{drink.Price:C}")</td>
+                <td>
+                    <a asp-page="/Drinks/Edit" asp-route-itemid="@drink.Id" class="btn btn-primary">Edit</a>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@drink.Id">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
